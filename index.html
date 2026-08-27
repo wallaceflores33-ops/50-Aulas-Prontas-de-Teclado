@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 Aulas Prontas de Teclado — Roteiro Pronto do Iniciante ao Intermediário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8F7F4;
+    --dark: #1A1A2E;
+    --dark-alt: #16213E;
+    --gold: #C8960C;
+    --gold-light: #E8B020;
+    --gold-pale: #F5E6B3;
+    --text: #2A2A2A;
+    --text-muted: #6B6B6B;
+    --white: #FFFFFF;
+    --border: #E2DDD5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── PIANO KEY DIVIDER SVG ─── */
+  .piano-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 0;
+    height: 48px;
+  }
+  .piano-divider.gold .white-key { fill: var(--gold-pale); }
+  .piano-divider.gold .black-key { fill: var(--gold); }
+  .piano-divider.dark .white-key { fill: rgba(255,255,255,0.15); }
+  .piano-divider.dark .black-key { fill: var(--gold); }
+  .piano-divider.light .white-key { fill: var(--border); }
+  .piano-divider.light .black-key { fill: var(--dark); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--dark);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(200,150,12,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+    max-width: 420px;
+    margin-bottom: 44px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+  .btn-primary .arrow {
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .hero-price-hint {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    padding: 80px 60px;
+  }
+
+  /* Big piano visual */
+  .hero-piano-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .hero-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(120px, 15vw, 200px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,150,12,0.25);
+    line-height: 1;
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,150,12,0.2);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-card-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .hero-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-block-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .block-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .block-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .block-text span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { width: 100%; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ─── WHAT IS IT ─── */
+  .what-section {
+    background: var(--bg);
+    padding: 100px 0;
+  }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+
+  .section-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .step-item:hover {
+    border-color: var(--gold);
+    transform: translateX(6px);
+  }
+  .step-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gold);
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold-pale);
+    line-height: 1;
+    min-width: 48px;
+  }
+
+  .step-content strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ─── BLOCKS SECTION ─── */
+  .blocks-section {
+    background: var(--dark);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blocks-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,150,12,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .blocks-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .blocks-header .section-label {
+    justify-content: center;
+  }
+  .blocks-header .section-label::before { display: none; }
+
+  .blocks-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .blocks-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .blocks-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+
+  .block-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 32px 24px;
+    position: relative;
+    cursor: default;
+    transition: background 0.25s, border-color 0.25s;
+    text-align: center;
+  }
+  .block-card:hover {
+    background: rgba(200,150,12,0.1);
+    border-color: rgba(200,150,12,0.3);
+  }
+  .block-card:hover .block-icon { transform: scale(1.15); }
+
+  .block-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+    transition: transform 0.25s;
+  }
+
+  .block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .block-count {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .block-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .per-aula-strip {
+    background: rgba(200,150,12,0.1);
+    border: 1px solid rgba(200,150,12,0.25);
+    border-radius: 6px;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .per-aula-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+  }
+
+  .per-aula-item::before {
+    content: '♩';
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  /* ─── FOR WHO ─── */
+  .forwho-section {
+    background: var(--bg);
+    padding: 100px 0;
+  }
+
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left 0.2s;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item:hover { padding-left: 8px; }
+
+  .check-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 11px;
+    color: var(--dark);
+    font-weight: 700;
+  }
+
+  .check-text {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-section {
+    background: var(--dark-alt);
+    padding: 80px 0;
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .how-card {
+    background: rgba(255,255,255,0.03);
+    padding: 48px 36px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+
+  .how-step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,150,12,0.3);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .how-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .how-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ─── WHAT YOU GET ─── */
+  .get-section {
+    background: var(--bg);
+    padding: 100px 0;
+  }
+
+  .get-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+  }
+
+  .get-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .get-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 22px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.2s;
+  }
+  .get-item:hover { border-color: var(--gold); }
+
+  .get-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .get-text {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ─── BONUS ─── */
+  .bonus-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .bonus-card {
+    background: var(--dark);
+    border-radius: 8px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(200,150,12,0.2);
+  }
+
+  .bonus-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at top right, rgba(200,150,12,0.2) 0%, transparent 70%);
+  }
+
+  .bonus-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .bonus-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .bonus-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .bonus-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bonus-price-strike {
+    font-size: 14px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: line-through;
+  }
+
+  .bonus-price-tag {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ─── OFFER ─── */
+  .offer-section {
+    background: var(--dark);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,150,12,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .offer-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .offer-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .offer-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-bottom: 56px;
+    line-height: 1.65;
+  }
+
+  .offer-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,150,12,0.3);
+    border-radius: 12px;
+    padding: 52px 48px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .offer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+
+  .offer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+  }
+
+  .offer-item .tick {
+    color: var(--gold);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .offer-price-block {
+    text-align: center;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .offer-from {
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+  }
+
+  .offer-strike {
+    font-size: 22px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: line-through;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+
+  .offer-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .offer-price sup {
+    font-size: 28px;
+    font-weight: 400;
+    vertical-align: super;
+    letter-spacing: 0;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .offer-once {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+  }
+
+  .btn-offer {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 22px 52px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    letter-spacing: 0.01em;
+    box-shadow: 0 8px 40px rgba(200,150,12,0.35);
+  }
+  .btn-offer:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 56px rgba(200,150,12,0.45);
+  }
+
+  .guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+
+  .guarantee .shield {
+    font-size: 18px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0F0F1A;
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  footer a {
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+  }
+  footer a:hover { color: var(--gold); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .hero-left > * {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.65s; }
+
+  .hero-right {
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.4s forwards;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-left { padding: 80px 28px 40px; }
+    .hero-right { padding: 0 28px 80px; }
+    .hero-number { display: none; }
+    .what-grid, .forwho-grid, .get-grid { grid-template-columns: 1fr; gap: 48px; }
+    .blocks-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .how-grid { grid-template-columns: 1fr; gap: 4px; }
+    .offer-box { padding: 32px 24px; }
+    .section-inner { padding: 0 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .blocks-grid { grid-template-columns: 1fr; }
+    .offer-price { font-size: 52px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="topo">
+  <div class="hero-left">
+    <p class="eyebrow">Material imprimível para professores · 50 aulas · Entrega imediata</p>
+    <h1 class="hero-headline">50 Aulas Prontas<br>de <em>Teclado</em></h1>
+    <p class="hero-sub">Roteiro completo — técnica, teoria aplicada e repertório — do iniciante ao intermediário. Imprime e aplica. Sem montar plano de aula do zero.</p>
+    <a href="#oferta" class="btn-primary">
+      Quero as 50 aulas — R&nbsp;9,90
+      <span class="arrow">→</span>
+    </a>
+    <p class="hero-price-hint">Pagamento único · PDF na hora</p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-piano-wrap">
+      <span class="hero-number">50</span>
+      <div class="hero-card">
+        <p class="hero-card-label">Como funciona cada aula</p>
+        <div class="hero-blocks">
+          <div class="hero-block-item">
+            <span class="block-num">01</span>
+            <div class="block-text">
+              <strong>Abre o roteiro do dia</strong>
+              <span>Objetivo técnico claro desde a primeira linha</span>
+            </div>
+          </div>
+          <div class="hero-block-item">
+            <span class="block-num">02</span>
+            <div class="block-text">
+              <strong>Aplica o exercício técnico</strong>
+              <span>Escala, acorde ou postura — passo a passo</span>
+            </div>
+          </div>
+          <div class="hero-block-item">
+            <span class="block-num">03</span>
+            <div class="block-text">
+              <strong>Fecha com o repertório</strong>
+              <span>Conecta a técnica com uma música sugerida</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Piano divider -->
+<div style="background: var(--bg); padding: 40px 0; display:flex; justify-content:center;">
+  <svg width="520" height="44" viewBox="0 0 520 44" xmlns="http://www.w3.org/2000/svg">
+    <!-- White keys -->
+    <g fill="#E2DDD5" stroke="#C8DDD5" stroke-width="0.5">
+      <rect x="0" y="0" width="32" height="44" rx="2"/>
+      <rect x="34" y="0" width="32" height="44" rx="2"/>
+      <rect x="68" y="0" width="32" height="44" rx="2"/>
+      <rect x="102" y="0" width="32" height="44" rx="2"/>
+      <rect x="136" y="0" width="32" height="44" rx="2"/>
+      <rect x="170" y="0" width="32" height="44" rx="2"/>
+      <rect x="204" y="0" width="32" height="44" rx="2"/>
+      <rect x="238" y="0" width="32" height="44" rx="2"/>
+      <rect x="272" y="0" width="32" height="44" rx="2"/>
+      <rect x="306" y="0" width="32" height="44" rx="2"/>
+      <rect x="340" y="0" width="32" height="44" rx="2"/>
+      <rect x="374" y="0" width="32" height="44" rx="2"/>
+      <rect x="408" y="0" width="32" height="44" rx="2"/>
+      <rect x="442" y="0" width="32" height="44" rx="2"/>
+      <rect x="476" y="0" width="32" height="44" rx="2"/>
+    </g>
+    <!-- Black keys -->
+    <g fill="#1A1A2E">
+      <rect x="22" y="0" width="20" height="28" rx="2"/>
+      <rect x="56" y="0" width="20" height="28" rx="2"/>
+      <rect x="124" y="0" width="20" height="28" rx="2"/>
+      <rect x="158" y="0" width="20" height="28" rx="2"/>
+      <rect x="192" y="0" width="20" height="28" rx="2"/>
+      <rect x="260" y="0" width="20" height="28" rx="2"/>
+      <rect x="294" y="0" width="20" height="28" rx="2"/>
+      <rect x="362" y="0" width="20" height="28" rx="2"/>
+      <rect x="396" y="0" width="20" height="28" rx="2"/>
+      <rect x="430" y="0" width="20" height="28" rx="2"/>
+      <rect x="498" y="0" width="20" height="28" rx="2"/>
+    </g>
+    <!-- Gold accent on a few black keys -->
+    <rect x="192" y="0" width="20" height="28" rx="2" fill="#C8960C"/>
+    <rect x="430" y="0" width="20" height="28" rx="2" fill="#C8960C"/>
+  </svg>
+</div>
+
+<!-- ─── O QUE É ─── -->
+<section class="what-section">
+  <div class="section-inner">
+    <div class="what-grid">
+      <div class="reveal">
+        <p class="section-label">O que é isso</p>
+        <h2 class="section-headline">Não é apostila teórica solta.<br><em>É o roteiro pronto da aula.</em></h2>
+        <p class="section-body">As 50 Aulas Prontas de Teclado trazem roteiro completo — exercício técnico, teoria aplicada e repertório — organizados do iniciante ao intermediário. Você abre, imprime e aplica. A aula já está montada.</p>
+      </div>
+      <div class="steps-list reveal reveal-delay-2">
+        <div class="step-item">
+          <span class="step-num">01</span>
+          <div class="step-content">
+            <strong>Abre o roteiro do dia</strong>
+            <p>Aula estruturada com objetivo técnico claro desde o início.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">02</span>
+          <div class="step-content">
+            <strong>Aplica o exercício técnico</strong>
+            <p>Escala, acorde ou postura trabalhados passo a passo.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">03</span>
+          <div class="step-content">
+            <strong>Fecha com o repertório</strong>
+            <p>A técnica trabalhada se conecta com uma música sugerida.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OS 5 BLOCOS ─── -->
+<section class="blocks-section">
+  <div class="section-inner">
+    <div class="blocks-header reveal">
+      <p class="section-label">O que vem nas 50 aulas</p>
+      <h2 class="blocks-headline">5 blocos temáticos, 10 aulas em cada</h2>
+      <p class="blocks-sub">Progressão técnica organizada — do primeiro contato com o instrumento até a improvisação inicial.</p>
+    </div>
+    <div class="blocks-grid reveal reveal-delay-1">
+      <div class="block-card">
+        <span class="block-icon">🖐</span>
+        <p class="block-count">10 aulas</p>
+        <h3 class="block-title">Postura e Técnica</h3>
+        <p class="block-desc">Base de postura e digitação correta desde o início.</p>
+      </div>
+      <div class="block-card">
+        <span class="block-icon">🎵</span>
+        <p class="block-count">10 aulas</p>
+        <h3 class="block-title">Escalas e Acordes</h3>
+        <p class="block-desc">Construção progressiva de escalas e acordes.</p>
+      </div>
+      <div class="block-card">
+        <span class="block-icon">📖</span>
+        <p class="block-count">10 aulas</p>
+        <h3 class="block-title">Teoria Aplicada</h3>
+        <p class="block-desc">Noções de teoria direto na prática do instrumento.</p>
+      </div>
+      <div class="block-card">
+        <span class="block-icon">🎹</span>
+        <p class="block-count">10 aulas</p>
+        <h3 class="block-title">Repertório</h3>
+        <p class="block-desc">Aplicação da técnica em músicas completas.</p>
+      </div>
+      <div class="block-card">
+        <span class="block-icon">🎶</span>
+        <p class="block-count">10 aulas</p>
+        <h3 class="block-title">Improvisação Básica</h3>
+        <p class="block-desc">Introdução à improvisação a partir do que foi aprendido.</p>
+      </div>
+    </div>
+    <div class="per-aula-strip reveal reveal-delay-2">
+      <span class="per-aula-item">Exercício técnico em cada aula</span>
+      <span class="per-aula-item">Ponto de teoria aplicado</span>
+      <span class="per-aula-item">Sugestão de repertório</span>
+      <span class="per-aula-item">Progressão do iniciante ao intermediário</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRA QUEM É ─── -->
+<section class="forwho-section">
+  <div class="section-inner">
+    <div class="forwho-grid">
+      <div class="reveal">
+        <p class="section-label">Pra quem é</p>
+        <h2 class="section-headline">Se você se reconhece em algum desses pontos, <em>o material é pra você.</em></h2>
+        <p class="section-body" style="margin-top: 16px;">Professores de particular ou escola, substitutos, quem dá aula pra alunos de nível diferente — qualquer um que perde tempo montando plano antes de cada aula.</p>
+      </div>
+      <div class="check-list reveal reveal-delay-2">
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          <p class="check-text">Passa tempo montando exercício técnico antes de cada aula</p>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          <p class="check-text">Dá aula pra alunos de nível diferente no mesmo dia</p>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          <p class="check-text">Quer progressão técnica clara, do iniciante ao intermediário</p>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          <p class="check-text">Dá aula particular ou em escola de música</p>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          <p class="check-text">Precisa de roteiro pronto pra substituir outro professor</p>
+        </div>
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          <p class="check-text">Quer conectar teoria com prática de forma natural</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMO FUNCIONA ─── -->
+<section class="how-section">
+  <div class="section-inner">
+    <div class="how-grid reveal">
+      <div class="how-card">
+        <p class="how-step-num">01</p>
+        <h3>Compra</h3>
+        <p>Pagamento único. Recebe o link do PDF por e-mail na hora, sem espera.</p>
+      </div>
+      <div class="how-card">
+        <p class="how-step-num">02</p>
+        <h3>Escolhe o bloco</h3>
+        <p>Decide qual bloco temático aplica na aula de hoje, de acordo com o nível do aluno.</p>
+      </div>
+      <div class="how-card">
+        <p class="how-step-num">03</p>
+        <h3>Imprime e aplica</h3>
+        <p>O roteiro já vem pronto do início ao fim. Sem adaptar, sem montar, sem perder tempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── O QUE VOCÊ RECEBE ─── -->
+<section class="get-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">O que você recebe</p>
+      <h2 class="section-headline">Tudo o que vem <em>no material</em></h2>
+    </div>
+    <div class="get-grid">
+      <div class="get-list reveal reveal-delay-1">
+        <div class="get-item">
+          <span class="get-dot"></span>
+          <p class="get-text">50 aulas completas em PDF, organizadas por nível técnico</p>
+        </div>
+        <div class="get-item">
+          <span class="get-dot"></span>
+          <p class="get-text">5 blocos temáticos, 10 aulas cada</p>
+        </div>
+        <div class="get-item">
+          <span class="get-dot"></span>
+          <p class="get-text">Exercício técnico e teoria aplicada em cada aula</p>
+        </div>
+        <div class="get-item">
+          <span class="get-dot"></span>
+          <p class="get-text">Sugestão de repertório por aula</p>
+        </div>
+        <div class="get-item">
+          <span class="get-dot"></span>
+          <p class="get-text">Formato A4 — imprime ou usa na tela</p>
+        </div>
+      </div>
+      <div class="bonus-col reveal reveal-delay-2">
+        <div class="bonus-card">
+          <span class="bonus-badge">🎁 Bônus 1</span>
+          <h3 class="bonus-title">Cartaz de Escalas e Acordes para Imprimir</h3>
+          <p class="bonus-desc">Cartaz ilustrado com as escalas e acordes trabalhados, pronto pra colar na sala como referência visual constante do aluno.</p>
+          <div class="bonus-price">
+            <span class="bonus-price-strike">R$ 16,90</span>
+            <span class="bonus-price-tag">Incluso no material</span>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <span class="bonus-badge">🎁 Bônus 2</span>
+          <h3 class="bonus-title">Lista de Repertório Extra por Estilo</h3>
+          <p class="bonus-desc">Sugestões de músicas organizadas por estilo para variar o repertório trabalhado com cada aluno sem precisar pesquisar na hora.</p>
+          <div class="bonus-price">
+            <span class="bonus-price-strike">R$ 13,90</span>
+            <span class="bonus-price-tag">Incluso no material</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Piano divider dark -->
+<div style="background: var(--dark); padding: 40px 0; display:flex; justify-content:center;">
+  <svg width="520" height="44" viewBox="0 0 520 44" xmlns="http://www.w3.org/2000/svg">
+    <g fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5">
+      <rect x="0" y="0" width="32" height="44" rx="2"/>
+      <rect x="34" y="0" width="32" height="44" rx="2"/>
+      <rect x="68" y="0" width="32" height="44" rx="2"/>
+      <rect x="102" y="0" width="32" height="44" rx="2"/>
+      <rect x="136" y="0" width="32" height="44" rx="2"/>
+      <rect x="170" y="0" width="32" height="44" rx="2"/>
+      <rect x="204" y="0" width="32" height="44" rx="2"/>
+      <rect x="238" y="0" width="32" height="44" rx="2"/>
+      <rect x="272" y="0" width="32" height="44" rx="2"/>
+      <rect x="306" y="0" width="32" height="44" rx="2"/>
+      <rect x="340" y="0" width="32" height="44" rx="2"/>
+      <rect x="374" y="0" width="32" height="44" rx="2"/>
+      <rect x="408" y="0" width="32" height="44" rx="2"/>
+      <rect x="442" y="0" width="32" height="44" rx="2"/>
+      <rect x="476" y="0" width="32" height="44" rx="2"/>
+    </g>
+    <g fill="#C8960C">
+      <rect x="22" y="0" width="20" height="28" rx="2"/>
+      <rect x="56" y="0" width="20" height="28" rx="2"/>
+      <rect x="124" y="0" width="20" height="28" rx="2"/>
+      <rect x="158" y="0" width="20" height="28" rx="2"/>
+      <rect x="192" y="0" width="20" height="28" rx="2"/>
+      <rect x="260" y="0" width="20" height="28" rx="2"/>
+      <rect x="294" y="0" width="20" height="28" rx="2"/>
+      <rect x="362" y="0" width="20" height="28" rx="2"/>
+      <rect x="396" y="0" width="20" height="28" rx="2"/>
+      <rect x="430" y="0" width="20" height="28" rx="2"/>
+      <rect x="498" y="0" width="20" height="28" rx="2"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ─── OFERTA FINAL ─── -->
+<section class="offer-section" id="oferta">
+  <div class="offer-inner">
+    <div class="reveal">
+      <p class="section-label" style="justify-content:center; color: var(--gold-light);">
+        <span style="display:inline-flex; align-items:center; gap:10px;">
+          <span style="display:block; width:24px; height:1px; background: var(--gold);"></span>
+          Oferta final
+          <span style="display:block; width:24px; height:1px; background: var(--gold);"></span>
+        </span>
+      </p>
+      <h2 class="offer-headline">Tudo isso por <span style="color: var(--gold-light);">R$ 9,90</span></h2>
+      <p class="offer-sub">Pagamento único. Acesso imediato. Sem mensalidade.</p>
+    </div>
+
+    <div class="offer-box reveal reveal-delay-1">
+      <div class="offer-list">
+        <div class="offer-item"><span class="tick">✦</span> 50 aulas completas de teclado em PDF</div>
+        <div class="offer-item"><span class="tick">✦</span> Bloco Postura e Técnica — 10 aulas completas</div>
+        <div class="offer-item"><span class="tick">✦</span> Bloco Escalas e Acordes — 10 aulas completas</div>
+        <div class="offer-item"><span class="tick">✦</span> Bloco Teoria Musical Aplicada — 10 aulas completas</div>
+        <div class="offer-item"><span class="tick">✦</span> Bloco Repertório — 10 aulas completas</div>
+        <div class="offer-item"><span class="tick">✦</span> Bloco Improvisação Básica — 10 aulas completas</div>
+        <div class="offer-item"><span class="tick">✦</span> Exercício técnico e sugestão de repertório em cada aula</div>
+        <div class="offer-item"><span class="tick">✦</span> Formato A4, pronto pra impressão ou uso em tela</div>
+        <div class="offer-item"><span class="tick">✦</span> <strong style="color: var(--gold-light);">Bônus 1</strong>&nbsp;— Cartaz de Escalas e Acordes</div>
+        <div class="offer-item"><span class="tick">✦</span> <strong style="color: var(--gold-light);">Bônus 2</strong>&nbsp;— Lista de Repertório Extra por Estilo</div>
+        <div class="offer-item"><span class="tick">✦</span> Entrega imediata por e-mail</div>
+        <div class="offer-item"><span class="tick">✦</span> Garantia incondicional de 7 dias</div>
+      </div>
+
+      <div class="offer-price-block">
+        <p class="offer-from">De R$ 50,70 por apenas</p>
+        <p class="offer-strike">R$ 50,70</p>
+        <p class="offer-price"><sup>R$</sup>9,90</p>
+        <p class="offer-once">pagamento único</p>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <a href="LINK_CHECKOUT" class="btn-offer">
+        Quero as 50 aulas — R$ 9,90
+        <span>→</span>
+      </a>
+      <div class="guarantee">
+        <span class="shield">🛡️</span>
+        <span>Garantia de 7 dias. Não gostou, o dinheiro volta — sem burocracia.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>Este material é um recurso pedagógico de apoio ao ensino de teclado.</p>
+  <p>Garantia incondicional de 7 dias. · <a href="LINK_CHECKOUT">Comprar agora</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
